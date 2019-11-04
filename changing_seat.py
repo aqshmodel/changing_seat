@@ -11,5 +11,24 @@ def changing_seat(seat,join_member):
             print('---- Bテーブル ----')
         elif i == 8:
             print('---- Cテーブル ----')
+    return seat
 
 
+def save_seat(seat):
+    file = open('previous_seat.txt', 'w')
+    for i in range(0, 14):
+        file.write(str(seat[i]) + '\n')
+    file.write(str(seat[i+1]))
+    file.close()
+
+
+def exe_changing_seat(seat, join_member):
+    file = open('previous_seat.txt', 'r+')
+    read_data = file.read().split()
+    if read_data != [] and read_data.count == 15:
+        join_member = read_data
+        changing_seat(seat, join_member)
+    else:
+        changing_seat(seat, join_member)
+    file.close()
+    save_seat(seat)
