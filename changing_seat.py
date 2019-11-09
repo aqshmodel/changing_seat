@@ -23,6 +23,7 @@ def save_seat(seat):
 
 
 def exe_changing_seat(seat, join_member):
+    f = open('previous_seat.txt', 'a')
     file = open('previous_seat.txt', 'r+')
     read_data = file.read().split()
     if read_data != [] and read_data.count == 15:
